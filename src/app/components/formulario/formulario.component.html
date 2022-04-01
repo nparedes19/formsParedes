@@ -1,0 +1,23 @@
+<h1>Formulario reactivo</h1>
+<form [formGroup]="formularioContacto" (ngSubmit)="submit()" class="row g-3">
+    <div class="col-md-12">
+        <p>Nombre</p>
+        <input class="form-control" type="text" formControlName="nombre" [ngClass]="formularioContacto.get('nombre')?.errors?.['required']?'is-invalid':'is-valid'">
+        <p class="invalid-feedback" *ngIf="formularioContacto.get('nombre')?.errors?.['required']">El valor Nombre es obligatorio</p>
+    </div>
+    <div class="col-md-12">
+        <p>Edad</p>
+        <input class="form-control" type="number" formControlName="edad" [ngClass]="formularioContacto.get('edad')?.errors?.['required']?'is-invalid':'is-valid'">
+        <p class="invalid-feedback" *ngIf="formularioContacto.get('edad')?.errors?.['required']">El valor Edad es obligatorio</p>
+    </div>
+    <div class="col-md-12">
+        <p>Email</p>
+        <input class="form-control" type="text" formControlName="email" [ngClass]="formularioContacto.get('email')?.errors?.['email']?'is-invalid':'is-valid'">
+        <p class="invalid-feedback" *ngIf="formularioContacto.get('email')?.errors?.['email']">El valor Email debe tener el formato adecuado</p>
+    </div>
+    <div class="col-md-12">
+        <p>Mensaje</p>
+        <textarea rows="5" cols="70" formControlName="mensaje"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+</form>
